@@ -1,0 +1,4 @@
+---
+# tasks file for with-s3
+# tasks file for /usr/local/etc/ansible/roles/nginx-marioarz
+- import_tasks: install.yaml

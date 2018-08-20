@@ -1,0 +1,13 @@
+[Unit]
+Description={{ appName }} Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/centos
+ExecStart=/usr/bin/java -jar {{ dest }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

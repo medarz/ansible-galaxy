@@ -1,0 +1,4 @@
+---
+# tasks file for /usr/local/etc/ansible/roles/squid-marioarz
+- name: "configuring service: squid"
+  systemd: "state=started daemon_reload=yes enabled=yes name=squid"

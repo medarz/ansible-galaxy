@@ -1,0 +1,13 @@
+---
+- name: Get Java App from S3 
+  aws_s3:
+    bucket: "{{ bucket }}"
+    object: "{{ key }}"
+    dest: "{{ dest }}"
+    mode: get
+
+- name: Copy service config file
+  template:
+    src:  ../templates/myapp.service.j2
+    dest: "/etc/systemd/system/{{ appName | lower }}.service"
+    mode: 0644

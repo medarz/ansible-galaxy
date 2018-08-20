@@ -1,0 +1,8 @@
+---
+# tasks file for ansible-hello-world
+- name: Hello world
+  debug:
+    msg: "Hello World!"
+
+#- name: "disable sshd"
+#  systemd: "state=stopped masked=yes enabled=no name=sshd"

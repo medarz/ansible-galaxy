@@ -1,0 +1,11 @@
+---
+# handlers file for java-marioarz
+- name: Start JavaApp
+  service:
+    name: "{{ appName | lower }}"
+    state: restarted
+
+- name: Reload JavaApp
+  service:
+    name: "{{ appName | lower }}"
+    state: reloaded

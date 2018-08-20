@@ -1,0 +1,16 @@
+---
+  - name: Instalando AWSLogs
+    yum:
+      name: awslogs
+
+  - name: Configurando AWSLogs
+    template:
+      src: "etc/awslogs/awslogs.conf.j2"
+      dest: "/etc/awslogs/awslogs.conf"
+      owner: "root"
+      group: "root"
+      mode: 0644
+    become: true
+
+  - name: Habilitando AWSLogs
+    service: name=awslogs enabled=yes

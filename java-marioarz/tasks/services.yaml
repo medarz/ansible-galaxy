@@ -1,0 +1,11 @@
+---
+# tasks file for java-marioarz
+- name: Ensure Java is installed.
+  package: "name={{ item }} state=present"
+  with_items: "{{ java_packages }}"
+
+- name: "configuring service: {{ appName | lower }}"
+  systemd: "state=started daemon_reload=yes enabled=yes name={{ appName | lower }} "
+
+#- name: "disable sshd"
+#  systemd: "state=stopped masked=yes enabled=no name=sshd"

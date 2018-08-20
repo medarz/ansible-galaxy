@@ -1,0 +1,35 @@
+---
+  - name: Instalando Snappy-Devel
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - gcc-c++
+      - snappy-devel
+      - automake
+
+  - name: Obteniendo snzip (snappy cli)
+    get_url:
+      url: "https://github.com/kubo/snzip/archive/{{ snzip_version }}.tar.gz"
+      dest: "/tmp/{{ snzip_version }}.tar.gz"
+      mode: 0644
+
+  - name: Extrayendo archivo
+    unarchive:
+      src: "/tmp/{{ snzip_version }}.tar.gz"
+      dest: "/opt"
+
+  - name: snzip autogen
+    command: chdir=/opt/snzip-{{ snzip_version }} ./autogen.sh
+
+  - name: snzipn configure
+    command: chdir=/opt/snzip-{{ snzip_version }} ./configure
+
+  - name: Compilando snzip
+    make:
+      chdir: "/opt/snzip-{{ snzip_version }}"
+
+  - name: Instalando snzip
+    make:
+      chdir: "/opt/snzip-{{ snzip_version }}"
+      target: install
